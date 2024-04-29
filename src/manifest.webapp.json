@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "name": "KaiOS App",
+  "description": "Template KaiOS App",
+  "type": "privileged",
+  "default_locale": "en-US",
+  "orientation": "default",
+  "developer": {
+    "name": "KaiOS",
+    "url": "http://kaiostech.com"
+  },
+  "locales": {
+    "en-US": {
+      "name": "KaiOS App",
+      "description": "Template KaiOS App"
+    },
+    "zh-CN": {
+      "name": "KaiOS 应用",
+      "description": "KaiOS 模版应用"
+    }
+  },
+  "launch_path": "/index.html",
+  "icons": {
+    "56": "assets/icons/app_56.png",
+    "112": "assets/icons/app_112.png"
+  },
+  "permissions": {},
+  "activities": {}
+}
