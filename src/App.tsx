@@ -1,16 +1,23 @@
 // import l10n.js first
 import "kaios-gaia-l10n";
-import { h, render, Fragment } from "preact";
-
+import { h, render } from "preact";
+import { Router, route } from 'preact-router';
 import "./App.scss";
+import Home from "./panels/Home/Home";
+import Reader from "./panels/Reader/Reader";
+import { useEffect } from "preact/hooks";
 
 const App = () => {
+
+  useEffect(() => {
+    route('/');
+  }, []);
+
+
   return (
-    <Fragment>
-      <div>
-        <label data-l10n-id="hello-world"></label>
-      </div>
-    </Fragment>
+    <Router>
+      <Home path="/" />
+    </Router>
   );
 };
 

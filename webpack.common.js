@@ -27,7 +27,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".css", ".json"],
     alias: {
-      "@": ".",
+      "@": resolveApp("."),
       react: "preact/compat",
       "react-dom": "preact/compat"
     }
