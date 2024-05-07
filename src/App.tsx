@@ -17,6 +17,7 @@ const App = () => {
   return (
     <Router>
       <Home path="/" />
+      <Reader path="/reader" />
     </Router>
   );
 };

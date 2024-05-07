@@ -11,6 +11,30 @@
   --color-purple-light: #b366ff;
 }
 
+@font-face {
+  font-family: 'gaia-icons';
+  src: url('/assets/fonts/gaia-icons.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+:focus {
+  outline: none;
+}
+
+[data-icon]:before,
+.ligature-icons {
+  font-family: 'gaia-icons';
+  content: attr(data-icon);
+  display: inline-block;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
 html,
 body,
 #root {
