@@ -9,14 +9,12 @@ export default class SimpleNavigationHelper {
     this.selector = selector;
     this.element = element;
     this.scrollSelector = scrollSelector;
-    console.log('add keydown listener', this.element);
     this.element.addEventListener('keydown', this.handleEvent.bind(this));
     this._mutationObserver = new MutationObserver(this.refresh.bind(this));
     this._mutationObserver.observe(this.element, {
       childList: true,
       subtree: true
     });
-    console.log('add focus listener', this.element);
     this.element.addEventListener('focus', this.handleEvent.bind(this));
     this.updateCandidates();
   }
@@ -51,7 +49,6 @@ export default class SimpleNavigationHelper {
   updateCandidates() {
     if (this.element) {
       this._candidates = Array.from(this.element.querySelectorAll(this.selector));
-      console.log('updateCandidates', this._candidates);
     }
   }
 
@@ -92,23 +89,17 @@ export default class SimpleNavigationHelper {
     if ('keydown' === evt.type) {
       this.onKeyDown(evt as KeyboardEvent);
     } else if ('focus' === evt.type) {
-      console.log('handle focus', evt);
       if (this._currentFocus && this._currentFocus !== this.element) {
-        console.log('handle focus 1');
         this.scrollIntoView(this._currentFocus);
         this._currentFocus.focus();
         return;
       }
       let next = this.findNext();
-      console.log('findNext', next);
       if (next) {
-        console.log('handle focus 2');
         next.focus();
-        console.log('handleEvent next focus ', next);
         this.scrollIntoView(next);
         this._currentFocus = next;
       } else {
-        console.log('handle focus 3');
         this._currentFocus = this.element;
       }
     }
