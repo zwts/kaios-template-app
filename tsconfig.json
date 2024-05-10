@@ -23,6 +23,9 @@
     },
     "resolveJsonModule": true,
 
+    /* Emit */
+    "downlevelIteration": true,
+
     /* Interop Constraints */
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

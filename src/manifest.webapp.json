@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "name": "KaiOS App",
   "description": "Template KaiOS App",
-  "type": "privileged",
+  "type": "certified",
   "default_locale": "en-US",
   "orientation": "default",
   "developer": {
@@ -24,6 +24,13 @@
     "56": "assets/icons/app_56.png",
     "112": "assets/icons/app_112.png"
   },
-  "permissions": {},
+  "permissions": {
+    "permissions":{},
+    "settings":{ "access": "readwrite" },
+    "nfc": {},
+    "nfc-manager": {},
+    "nfc-hci-events": {},
+    "secureelement-manage": {}
+  },
   "activities": {}
 }
