@@ -10,6 +10,7 @@ interface CustomNavigator {
   };
   mozNfc: {
     ontagfound: Function | null;
+    ontaglost: Function | null;
   };
   mozL10n: {
     once: (callback: Function) => void;

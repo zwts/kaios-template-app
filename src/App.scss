@@ -3,12 +3,14 @@
   --default-icon-size: 2.2rem;
   --title-bar-height: 2.8rem;
   --tab-bar-height: 3.6rem;
-  --color-gs10: #1e1e26;
-  --color-gs20: #808091;
-  --color-gs40: #515161;
-  --color-gs60: #272730;
-  --color-gs80: #b2b2c2;
-  --color-purple-light: #b366ff;
+  --color-gs100: #000000;
+  --color-gs90: #323232;
+  --color-gs70: #6a6a6a;
+  --color-gs45: #8c8c8c;
+  --color-gs20: #cccccc;
+  --color-gs10: #e6e6e6;
+  --color-gs00: #ffffff;
+  --highlight-color: #00ae57;
 }
 
 @font-face {
@@ -46,6 +48,6 @@ body,
   outline: none;
   overflow: hidden;
   font-family: 'Open Sans Regular';
-  background-color: #FFF;
+  background-color: var(--color-gs00);
   color: #000;
 }

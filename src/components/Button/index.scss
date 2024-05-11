@@ -34,7 +34,7 @@
   }
 
   &:focus {
-    background-color: #00ae57;
+    background-color: var(--highlight-color);
     border: none;
     color: var(--color-gs00);
 

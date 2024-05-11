@@ -57,7 +57,6 @@ const Home: FunctionalComponent = () => {
   return (
     <Fragment>
       <div className="home" ref={panelRef} tabIndex={-1} onKeyDown={handleKeydown}>
-        <div className="home-header" data-l10n-id="reader-or-card"></div>
         <div className="home-container">
           <Button l10nId="reader" id="reader"></Button>
           <Button l10nId="card" id="card"></Button>
