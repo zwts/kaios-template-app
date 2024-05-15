@@ -48,7 +48,7 @@ const Home: FunctionalComponent = () => {
       navigatorRef.current = new SimpleNavigationHelper('.pill-button', panel, '.home-container');
     }
 
-    panel.focus()
+    panel.focus();
     return () => {
       navigatorRef.current.destroy();
     };

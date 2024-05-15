@@ -1,11 +1,14 @@
 import { Fragment, FunctionalComponent, h } from "preact";
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { route } from "preact-router";
 import MifareClassic from "../../helpers/mifare_classic_helper";
+import { playRingtone } from "@/helpers/commonHelper";
+
 
 import "./Reader.scss";
 
 const Reader: FunctionalComponent = () => {
+  const panelRef = useRef<HTMLDivElement>(null);
   const [balance, setBalance] = useState('');
   const [readerState, setReaderState] = useState('lost');
   const PRICE = 100;
@@ -30,29 +33,6 @@ const Reader: FunctionalComponent = () => {
     });
   };
 
-  // Convert tag id:  uint8ArrayTo16String(tag.id)
-  const uint8ArrayTo16String = (arr: Uint8Array) => {
-    let str = '';
-    if (arr.length) {
-      for (var i = 0; i < arr.length; i++) {
-        str += arr[i].toString(16);
-      }
-    }
-    return str;
-  };
-
-  const playRingtone = () => {
-    const ringtonePlayer = new Audio();
-    ringtonePlayer.src = 'assets/media/notifier_bell.ogg';
-    // @ts-ignore
-    ringtonePlayer.mozAudioChannelType = 'notification';
-    ringtonePlayer.play();
-    window.setTimeout(() => {
-      ringtonePlayer.pause();
-      ringtonePlayer.src = '';
-    }, 2000);
-  };
-
   const handleTagFound = (event: any) => {
     const { tag } = event;
     if (tag) {
@@ -74,6 +54,7 @@ const Reader: FunctionalComponent = () => {
     const {key} = event;
     switch(key) {
       case 'Backspace':
+        console.log('handle event backspace');
         event.preventDefault();
         event.stopPropagation();
         route('/');
@@ -84,6 +65,10 @@ const Reader: FunctionalComponent = () => {
   }
 
   useEffect(() => {
+    const panel = panelRef.current;
+    if (panel) {
+      panel.focus();
+    }
     const nfc = window.navigator.mozNfc;
     nfc.ontagfound = handleTagFound;
     nfc.ontaglost = handleTagLost;
@@ -95,7 +80,7 @@ const Reader: FunctionalComponent = () => {
 
   return (
     <Fragment>
-      <div className="reader" onKeyDown={handleKeydown}>
+      <div className="reader" ref={panelRef} onKeyDown={handleKeydown} tabIndex={-1}>
         <div className="reader-container">
           <div className="card-info-container">
             {readerState === 'lost' ? (
@@ -118,7 +103,7 @@ const Reader: FunctionalComponent = () => {
                   </div>
                 </div>
                 <div className="card-deduction">
-                  <label data-l10n-id="deduction"></label>
+                  <label data-l10n-id="deduction-colon"></label>
                   <span>{`-${(PRICE/100).toPrecision(3)}`}</span>
                 </div>
               </Fragment>

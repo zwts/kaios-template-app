@@ -24,8 +24,10 @@
     "56": "assets/icons/app_56.png",
     "112": "assets/icons/app_112.png"
   },
+  "messages": [
+    { "nfc-hci-event-transaction": "/index.html" }
+  ],
   "permissions": {
-    "permissions":{},
     "settings":{ "access": "readwrite" },
     "nfc": {},
     "nfc-manager": {},

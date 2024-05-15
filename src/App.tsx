@@ -5,6 +5,7 @@ import { Router, route } from 'preact-router';
 import "./App.scss";
 import Home from "./panels/Home/Home";
 import Reader from "./panels/Reader/Reader";
+import Card from "./panels/Card/Card";
 import { useEffect } from "preact/hooks";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
     <Router>
       <Home path="/" />
       <Reader path="/reader" />
+      <Card path="/card" />
     </Router>
   );
 };

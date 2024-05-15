@@ -16,6 +16,7 @@ interface CustomNavigator {
     once: (callback: Function) => void;
     get: (id: string, params?: object) => string;
   };
+  mozSetMessageHandler: Function;
 }
 interface Navigator extends CustomNavigator {}
 

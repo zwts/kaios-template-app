@@ -27,7 +27,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".css", ".json"],
     alias: {
-      "@": resolveApp("."),
+      "@": resolveApp("./src/"),
       react: "preact/compat",
       "react-dom": "preact/compat"
     }
@@ -83,6 +83,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: "src/manifest.webapp.json", to: "manifest.webapp" },
+      { from: "src/fake-data.json", to: "fake-data.json"},
       { from: "src/index.html" },
       { from: "src/locales", to: "locales" },
       { from: "assets", to: "assets" }

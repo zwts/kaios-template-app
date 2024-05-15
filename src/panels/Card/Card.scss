@@ -1,0 +1,91 @@
+.card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  font-size: 1.7rem;
+
+  .card-hint {
+    width: 20rem;
+    height: 12rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-radius: 10px;
+    background: linear-gradient(45deg, var(--color-purple-pressed), var(--color-pink));
+
+    .card-name {
+      height: 3rem;
+      width: calc(100% - 2rem);
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+      color: var(--color-gs00);
+
+      > i {
+        height: 3rem;
+        width: 3rem;
+        font-size: 2rem;
+        line-height: 3rem;
+      }
+
+      > span {
+        font-size: 1.2rem;
+      }
+    }
+
+    > i {
+      height: 6rem;
+      width: 6rem;
+      font-size: 5rem;
+      line-height: 6rem;
+      text-align: center;
+      color: var(--color-gs00);
+    }
+  }
+
+  .transaction-title {
+    margin-top: 2rem;
+    font-size: 2rem;
+    color: var(--color-purple-pressed);
+    font-weight: bold;
+  }
+
+  .transaction-message {
+    width: calc(100% - 4rem);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background: linear-gradient(white, 90%, var(--color-purple-pressed));
+
+    .message-item {
+      width: calc(100% - 2rem);
+      height: 4rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      > span {
+        font-weight: bolder;
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
