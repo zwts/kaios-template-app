@@ -43,8 +43,9 @@
   "dependencies": {
     "classnames": "^2.3.2",
     "preact": "10.3.0",
-    "kaios-gaia-l10n": "^0.0.1",
+    "preact-async-route": "^2.2.1",
     "preact-router": "^3.2.1",
+    "kaios-gaia-l10n": "^0.0.1",
     "typescript": "~4.6.4"
   }
 }

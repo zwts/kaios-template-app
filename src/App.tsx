@@ -1,24 +1,25 @@
 // import l10n.js first
 import "kaios-gaia-l10n";
-import { h, render } from "preact";
+import { Fragment, h, render } from "preact";
 import { Router, route } from 'preact-router';
 import "./App.scss";
-import Home from "./panels/Home/Home";
-import Reader from "./panels/Reader/Reader";
 import { useEffect } from "preact/hooks";
+import { PATH } from "./constants";
+import AsyncPanel from "./components/AsyncPanel";
 
 const App = () => {
 
   useEffect(() => {
-    route('/');
+    route(PATH.HOME);
   }, []);
 
 
   return (
-    <Router>
-      <Home path="/" />
-      <Reader path="/reader" />
-    </Router>
+    <Fragment> 
+      <Router>
+        <AsyncPanel path={PATH.HOME} panelName="Home/Home" />
+      </Router>
+    </Fragment>
   );
 };
 
