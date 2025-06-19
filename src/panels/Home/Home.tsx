@@ -1,15 +1,14 @@
 import { Fragment, FunctionalComponent, createRef, h } from "preact";
 import { useEffect, useRef } from "preact/hooks";
-
 import Button from "../../components/Button";
 import SimpleNavigationHelper from "../../helpers/simple_navigation_helper"
-
+import { useAppSelector } from "@/redux/hooks";
 import "./Home.scss";
-
 
 const Home: FunctionalComponent = () => {
   const panelRef = useRef<HTMLDivElement>(null);
   const navigatorRef = createRef();
+  const version = useAppSelector((state) => state.app.version);
 
   useEffect(() => {
     const panel = panelRef.current;
@@ -31,6 +30,7 @@ const Home: FunctionalComponent = () => {
         <div className="home-container">
           <Button l10nId="reader"></Button>
           <Button l10nId="card"></Button>
+          <label class="version">{`App Version ${version}`}</label>
         </div>
       </div>
     </Fragment>

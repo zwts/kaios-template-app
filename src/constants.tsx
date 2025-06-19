@@ -2,5 +2,8 @@ const PATH = {
   HOME: '/home',
 };
 
-export { PATH };
+const STORAGE_KEYS = {
+  APP_VERSION: 'appVersion'
+}
 
+export { PATH, STORAGE_KEYS };
