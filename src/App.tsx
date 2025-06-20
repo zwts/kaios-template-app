@@ -2,14 +2,19 @@
 import "kaios-gaia-l10n";
 import { Fragment, FunctionComponent, h, render } from "preact";
 import { Router, route } from 'preact-router';
-import "./App.scss";
 import { useEffect } from "preact/hooks";
-import { PATH } from "./constants";
-import AsyncPanel from "./components/AsyncPanel";
 import { store } from './redux/store';
 import { Provider } from "react-redux";
 
+import { PATH } from "./constants";
+import AsyncPanel from "./components/AsyncPanel";
+import "./App.scss";
+
 const App: FunctionComponent = () => {
+  const init = () => {
+    const initialPromise = [];
+  };
+
   useEffect(() => {
     route(PATH.HOME);
   }, []);

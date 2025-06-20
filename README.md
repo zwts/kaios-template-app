@@ -15,3 +15,15 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ## Release application
 Build scripts `yarn dev` or `yarn prod` will auto package application to `release` folder.
+
+
+## Telegram library
+
+1. Clone Telegram library from [GramJS](https://github.com/gram-js/gramjs)
+2. Use webpack to bundle Telegram library.
+```
+yarn
+NODE_ENV=production npx webpack
+node generate_webpack.js
+```
+3. Copy telegram.js to `src/lib/telegram`
