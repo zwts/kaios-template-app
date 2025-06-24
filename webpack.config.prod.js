@@ -1,4 +1,4 @@
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const cssnano = require("cssnano");
 
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");

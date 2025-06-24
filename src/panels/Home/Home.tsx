@@ -31,6 +31,8 @@ const Home: FunctionalComponent = () => {
           <Button l10nId="reader"></Button>
           <Button l10nId="card"></Button>
           <label class="version">{`App Version ${version}`}</label>
+          <div style="font-family: GaiaIcons; font-size: 48px;">check-on</div>
+          <div data-icon="check-off"></div>
         </div>
       </div>
     </Fragment>

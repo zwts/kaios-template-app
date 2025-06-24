@@ -1,15 +1,10 @@
-const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ZipFilesPlugin = require('webpack-archive-plugin');
-
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-!fs.existsSync("./release") && fs.mkdirSync("./release");
+const ZipFilesPlugin = require("zip-webpack-plugin");
 
 module.exports = {
   name: "common",
@@ -29,7 +24,8 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, "src"),
       react: "preact/compat",
-      "react-dom": "preact/compat"
+      "react-dom": "preact/compat",
+      assets: path.resolve(__dirname, "src/assets")
     }
   },
   optimization: {
@@ -63,8 +59,11 @@ module.exports = {
         loader: "ts-loader"
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: "url-loader?limit=100000"
+        test: /\.(woff|woff2|eot|ttf|svg)$/,
+        loader: "file-loader",
+        options: {
+          name: "assets/fonts/[name].[hash:8].[ext]"
+        }
       },
       {
         test: /\.(css|scss)$/,
@@ -72,28 +71,32 @@ module.exports = {
       }
     ]
   },
-
   plugins: [
     new webpack.EnvironmentPlugin({
       NODE_ENV: process.env.NODE_ENV || "development"
     }),
-    new CleanWebpackPlugin({ verbose: false }),
     new MiniCssExtractPlugin({
       filename: "[name].css"
     }),
-    new CopyWebpackPlugin([
-      { from: "src/manifest.webapp.json", to: "manifest.webapp" },
-      { from: "src/index.html" },
-      { from: "src/locales", to: "locales" },
-      { from: "assets", to: "assets" }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/manifest.webapp.json", to: "manifest.webapp" },
+        { from: "src/locales", to: "locales" },
+        { from: "src/assets/icons", to: "assets/icons" },
+        { from: "src/libs", to: "libs" }
+      ]
+    }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "release/*")]
+    }),
     new HtmlWebpackPlugin({
       template: "src/index.html"
     }),
     new ZipFilesPlugin({
-      entries: [{ src: resolveApp("./dist/"), dist: "../" }],
-      output: "./release/application",
-      format: "zip"
+      filename: "application.zip",
+      path: path.resolve(__dirname, "release"),
+      archivePath: path.resolve(__dirname, "dist"),
+      exclude: []    
     })
   ]
 };
