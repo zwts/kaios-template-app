@@ -25,7 +25,6 @@ module.exports = {
       "@": path.resolve(__dirname, "src"),
       react: "preact/compat",
       "react-dom": "preact/compat",
-      assets: path.resolve(__dirname, "src/assets")
     }
   },
   optimization: {
@@ -59,11 +58,8 @@ module.exports = {
         loader: "ts-loader"
       },
       {
-        test: /\.(woff|woff2|eot|ttf|svg)$/,
+        test: /\.(woff|woff2|eot|svg)$/,
         loader: "file-loader",
-        options: {
-          name: "assets/fonts/[name].[hash:8].[ext]"
-        }
       },
       {
         test: /\.(css|scss)$/,
@@ -82,7 +78,7 @@ module.exports = {
       patterns: [
         { from: "src/manifest.webapp.json", to: "manifest.webapp" },
         { from: "src/locales", to: "locales" },
-        { from: "src/assets/icons", to: "assets/icons" },
+        { from: "src/assets", to: "assets" },
         { from: "src/libs", to: "libs" }
       ]
     }),
